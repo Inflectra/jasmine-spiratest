@@ -26,6 +26,7 @@ Install the integration by running `npm install jasmine-spiratest` in the root d
 }
 ```
 Fields are required unless otherwise noted.
+
 Field | Description
 --- | --- |
 `url` | The root URL of your SpiraTest instance without a '/' at the end

@@ -1,10 +1,19 @@
 {
     "name": "jasmine-spiratest",
+    "author": {
+        "name": "Inflectra Corporation",
+        "email": "support@inflectra.com",
+        "url": "http://www.inflectra.com/"
+    },
     "version": "1.0.0",
     "main": "./src/SpiraReporter.js",
     "license": "MIT",
     "scripts": {
         "test": "jasmine"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Inflectra/jasmine-spiratest.git"
     },
     "dependencies": {
         "jasmine": "^3.3.1"
