@@ -1,0 +1,12 @@
+{
+    "name": "jasmine-spiratest",
+    "version": "1.0.0",
+    "main": "./src/SpiraReporter.js",
+    "license": "MIT",
+    "scripts": {
+        "test": "jasmine"
+    },
+    "dependencies": {
+        "jasmine": "^3.3.1"
+    }
+}
