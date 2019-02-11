@@ -8,7 +8,7 @@ describe("Test Calculator", () => {
     jasmine.getEnv().addReporter(new SpiraReporter({
         "url": "https://demo.spiraservice.net/peter-inflectra",
         "username": "fredbloggs",
-        "token": "{7A05FD06-83C3-4436-B37F-51BCF0060483}",
+        "token": "",
         "projectId": 1,
         "releaseId": 1,
         "testSetId": 1,
@@ -17,7 +17,7 @@ describe("Test Calculator", () => {
             "should multiply correctly": 21,
             "should solve exponents and logarithms correctly": 16
         }
-}));
+    }));
     var calc;
     beforeEach(() => {
         calc = new Calculator();

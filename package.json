@@ -17,5 +17,10 @@
     },
     "dependencies": {
         "jasmine": "^3.3.1"
-    }
+    },
+    "keywords": [
+        "jasmine",
+        "test",
+        "tdd"
+    ]
 }
