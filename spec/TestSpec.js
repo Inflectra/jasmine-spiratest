@@ -3,16 +3,16 @@ describe("Test having two specs", () => {
     var SpiraReporter = require('../src/SpiraReporter');
 
     jasmine.getEnv().addReporter(new SpiraReporter({
-        "url": "https://demo.spiraservice.net/peter-inflectra",
+        "url": "",
         "username": "fredbloggs",
-        "token": "{7A05FD06-83C3-4436-B37F-51BCF0060483}",
+        "token": "{}",
         "projectId": 1,
         "releaseId": 1,
         "testSetId": 1,
         "testCases": {
             "default": 20
         }
-}));
+    }));
 
     describe("Test Equality", () => {
         it("Equality should be preserved", () => {

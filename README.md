@@ -9,7 +9,7 @@ Unfortunately, this integration will work with SpiraTest/SpiraTeam/SpiraPlan (he
 This guide assumes a basic familiarity with both SpiraTest and the Jasmine testing framework. 
 
 ## Setting up the integration
-Install the integration by running `npm install jasmine-spiratest` in the root directory of your tests. Inside each test spec file, put the line `jasmine.getEnv().addReporter(newSpiraReporter(spiraCredentials));` where `spiraCredentials` is an object of the format below:
+Install the integration by running `npm i jasmine-spiratest` in the root directory of your tests. Inside each test spec file, import the SpiraReporter with `var SpiraReporter = require('jasmine-spiratest')` then put the line `jasmine.getEnv().addReporter(new SpiraReporter(spiraCredentials));` where `spiraCredentials` is an object of the format below. You can see a full sample test spec at the bottom of this README.
 ```javascript
 {
     "url": "https://doctor/SpiraPlan",
@@ -43,3 +43,35 @@ Once you have added the SpiraReporter to the jasmine environment in each file as
 ## Using the SpiraTest Reporter
 Actually, you don't do anything different! Just run `npm test` or however you ran jasmine before and you should see test runs created in the project you specified!
 
+## Sample Test Spec with SpiraTest Integration
+```JavaScript
+describe("Test having two specs", () => {
+    var SpiraReporter = require('jasmine-spiratest');
+
+    jasmine.getEnv().addReporter(new SpiraReporter({
+        "url": "https://doctor/SpiraPlan",
+        "username": "fredbloggs",
+        "token": "{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}",
+        "projectId": 1,
+        "releaseId": 1,
+        "testSetId": 1,
+        "testCases": {
+            "default": 20,
+            "equality works": 21,
+            "addition works": 16
+        }
+    }));
+
+    describe("Test basic JavaScript", () => {
+        it("Equality works...", () => {
+            expect(2).toEqual(2);
+        });
+        it("Addition works", () => {
+            expect(3 + 2).toEqual(5);
+        });
+        it("Multiplication works", () => {
+            expect(4 * 5).toEqual(20);
+        });
+    });
+});
+```

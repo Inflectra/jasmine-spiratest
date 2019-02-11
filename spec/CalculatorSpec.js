@@ -6,9 +6,9 @@ describe("Test Calculator", () => {
 
 
     jasmine.getEnv().addReporter(new SpiraReporter({
-        "url": "https://demo.spiraservice.net/peter-inflectra",
+        "url": "",
         "username": "fredbloggs",
-        "token": "",
+        "token": "{}",
         "projectId": 1,
         "releaseId": 1,
         "testSetId": 1,
