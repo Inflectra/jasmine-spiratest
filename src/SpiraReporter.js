@@ -1,6 +1,6 @@
 var http = require('http');
 var https = require('https');
-const spiraServiceUrl = "/Services/v5_0/RestService.svc/";
+const spiraServiceUrl = "/Services/v6_0/RestService.svc/";
 
 module.exports = SpiraReporter;
 
@@ -104,12 +104,15 @@ SpiraReporter.prototype.specDone = (result) => {
     if (result.id != lastPosted.id) {
         lastPosted = result;
 
+        var now = new Date().getTime();
+
         var newTestRun = {
             testCaseId: credentials.testCases.default,
             testName: result.description,
             stackTrace: '',
             statusId: -1,
-            startDate: "",
+            startDate: now - result.duration,
+            endDate: now,
             message: ""
         }
 
@@ -127,9 +130,6 @@ SpiraReporter.prototype.specDone = (result) => {
         result.failedExpectations.forEach(e => {
             newTestRun.stackTrace += e.stack;
         });
-
-        //populate the startDate
-        newTestRun.startDate = "/Date(" + new Date().getTime() + "-0000)/";
 
         if (result.status == "passed") {
             //2 is passed in Spira
@@ -205,7 +205,8 @@ async function postTestRuns() {
                 RunnerMessage: e.message,
                 RunnerStackTrace: e.stackTrace,
                 ExecutionStatusId: e.statusId,
-                StartDate: e.startDate
+                StartDate: new Date(e.startDate),
+                EndDate: new Date(e.endDate)
             }
 
             //handle optional release and test set ID's
